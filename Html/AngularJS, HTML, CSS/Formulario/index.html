@@ -1,0 +1,179 @@
+ <html ng-app="todoApp">
+	<head>
+        <meta charset="utf-8">     
+        <title>Prueba</title>	
+		<script src="js/jquery.js"></script>
+		<script src="js/angular.js"></script>
+		<script src="js/angular-animate.min.js"></script>
+		<script src="js/angular-sanitize.js"></script>
+		<script src="js/ui-bootstrap-tpls.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/kendo.ui.core.min.js"></script>
+		<script src="js/ProgrmacionAngular.js"></script>
+		<link href="css/estilo.css" rel="stylesheet">        
+		<link href="css/kendo.bootstrap.min.css" rel="stylesheet">
+		<link href="css/kendo.common-bootstrap.min.css" rel="stylesheet">
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+    </head>
+	
+	<div class="container"  ng-controller="PopoverDemoCtrl as ctrl">   
+			 <!--Seccion encabezado -->
+		<div class="col-lg-offset-1 page-header col-md-12 col-xs-12">
+			<div class="row">		   
+			<hgroup>
+			 <h1 >Formulario Prueba</h1>
+			 <h2 >Utilizando Tecnologia Angular, Kendo , bootraps</h2>
+			</hgroup>
+			<p >Diseño responsivo para tablet, movil </p>
+			</div>
+		</div>		
+        <!--Seccion Contenido -->
+        <div class="col-lg-offset-1 seccion">
+           
+            <div class=""> 
+                <div class="row form-group">
+                    <div class="col-lg-2 col-md-2 col-xs-12 col-sm-12">
+                        <label for="txtNombre"  >Nombres</label>   
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-xs-12 col-sm-12">
+                        <input type="text" id="txtNombre" name="txtNombre" class="k-textbox"   placeholder="Nombres"
+                           ng-model="ctrl.nombres" 
+                               />
+						
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-xs-12 col-sm-12">
+                        <label for="txtApellido"  >Apellidos</label>   
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-xs-12 col-sm-12">
+                        <input type="text" id="txtApellido" name="txtApellido" class="k-textbox"   placeholder="Apellidos"
+						ng-model="ctrl.apellidos"
+                            />
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-lg-2 col-md-2 col-xs-12 col-sm-12">
+                        <label for="dpkFecha"  >*Fecha Nacimiento</label>   
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-xs-12 col-sm-12">
+                         <input type="text" id="dpkFecha" name="dpkFecha" kendo-date-picker
+                            k-options="fechaOptions"
+                            name="fechaNacimiento"
+                            placeholder="dd / mm / aaaa"
+                            ng-model="ctrl.fecha"
+							 data-toggle="tooltip" 
+							 title="Fecha de nacimiento"
+                           />
+                    </div>
+
+                    <div class="col-lg-2 col-md-2 col-xs-12 col-sm-12">
+                        <label for="cmbPais"  >Pais de Nacimiento</label>   
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-xs-12 col-sm-12">
+                         <input id="cmbPais"  name="cmbPais" 
+                        kendo-combo-box 
+                        k-data-text-field="'nombre'"
+                        k-data-value-field="'codigo'"
+                        k-data-source="ctrl.itemsOrigen" 
+                        ng-model="ctrl.pais"                
+                        k-placeholder="'Seleccione un Item'"                        
+                                k-filter="'contains'"/>
+                    </div> 
+                </div>
+       
+				
+				<div class="row form-group">        
+                    <div class="col-lg-2 col-md-2 col-xs-12 col-sm-12">
+                        <label for="txtObservaciones"  >Observaciones</label>   
+                    </div>
+                    <div class="col-lg-8 col-md-10 col-xs-12 col-sm-12" >
+                        <input type="text" id="txtObservaciones" name="txtObservaciones" class="k-textbox"   placeholder="Observaciones"/>
+                    </div>                    
+                </div>                
+            </div>
+            
+        </div>
+        <!--Seccion Contenido -->
+        <div class="col-lg-offset-1 seccion">
+        <h2 translate>Seccion 2:  Informacion Adicional</h2>
+        <div class=""> 
+            <div class="row form-group">
+                <div class="col-lg-2 col-md-2 col-xs-12 col-sm-12">
+                    <label for="txtCalles"  >Calles</label>   
+                </div>
+                <div class="col-lg-3 col-md-4 col-xs-12 col-sm-12">
+                    <input type="text" id="txtCalles" name="txtCalles" class="k-textbox"   placeholder="Calles" 
+                      />
+                </div>
+                <div class="col-lg-2 col-md-2 col-xs-12 col-sm-12">
+                    <label for="txtBarrio"  >Barrio</label>   
+                </div>
+                <div class="col-lg-3 col-md-4 col-xs-12 col-sm-12">
+                    <input type="text" id="txtBarrio" class="k-textbox"   placeholder="Barrio"/>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-lg-2 col-md-2 col-xs-12 col-sm-12">
+                    <label for="codigoPostal"   >CodigoPostal Postal</label>   
+                </div>
+                <div class="col-lg-3 col-md-4 col-xs-12 col-sm-12">                                        
+                   <select id="codigoPostal" name="codigoPostal" kendo-multi-select k-options="ctrl.selectOptions" k-placeholder="'Seleccione un Item...'" k-ng-model="codigo"
+				   ></select>
+                </div>
+                <div class="col-lg-2 col-md-2 col-xs-12 col-sm-12">
+                    <label for="ddlDropDownList2"   >Ciudadela2</label>   
+                </div>
+                <div class="col-lg-3 col-md-4 col-xs-12 col-sm-12">
+                     <select kendo-drop-down-list="dropdownlist"
+                        id="ddlDropDownList2" name="ddlDropDownList2"
+                        ng-model="ddliudadela"
+                        k-data-text-field="'nombre'"
+                        k-data-value-field="'codigo'"
+                        k-data-source="ctrl.itemsOrigen" 
+                        k-option-label="'Seleccione un Item'" 
+                        k-filter="'contains'" 
+                        
+                        required>
+                    </select>
+                </div> 
+            </div>
+            <div class="row form-group">        
+                <div class="col-lg-2 col-md-2 col-xs-12 col-sm-12">
+                    <label for="txtSeleccione"   >Idiomas: </label>   
+                </div>
+                <div class="col-lg-3 col-md-4 col-xs-12 col-sm-12" >
+                    <input type="checkbox" id="lbl" class="k-checkbox "  />
+                    <label class="k-checkbox-label" for="lbl">Ingles </label>
+
+                  <input type="checkbox" id="lbl2"    class="k-checkbox " checked="checked"/>
+                  <label class="k-checkbox-label"    for="lbl2">Español</label>
+                    
+            
+                </div>
+                                
+            </div>           
+        </div> 
+	</form>    
+		 
+		<!--Seccion Botones -->
+			<div class="row">
+				<div class="col-lg-12  col-md-12 col-xs-12">
+					<div class="button-form text-center"> 
+						<button id="btnAceptar" class="k-button k-primary" data-toggle="modal" data-target="#myModal"> Aceptar</button>
+						<button id="btnLimpiar" class="k-button k-primary" ng-click="ctrl.limpiar()">Limpiar</button>  
+					</div>
+				</div>
+			</div>
+			
+			
+			<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">     
+		<div class="modal-body">
+			<p>Saludos</p>
+		</div>      
+    </div>
+  </div>  
+</div>
+	</div>
+</html>

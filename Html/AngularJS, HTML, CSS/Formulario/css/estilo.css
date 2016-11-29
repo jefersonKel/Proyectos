@@ -1,0 +1,3 @@
+span.k-datepicker, span.k-timepicker, span.k-datetimepicker, span.k-colorpicker, span.k-numerictextbox, span.k-combobox, span.k-dropdown, input.k-textbox, textarea.k-textbox, .k-textbox>input {
+    width: 100%;
+}
