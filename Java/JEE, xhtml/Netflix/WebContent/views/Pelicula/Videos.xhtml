@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	template="/WEB-INF/templates/default.xhtml">
+	<ui:define name="content">
+
+		<h:form id="reg">
+			<h:messages styleClass="messages"
+				style="list-style: none; padding:0; margin:0;"
+				errorClass="alert alert-error" infoClass="alert alert-success"
+				warnClass="alert alert-warning" globalOnly="true" />
+
+			<ui:repeat value="#{peliculaController.tipoVideo}" var="tipos">
+				<p>
+					<td width="10%">
+						<div class="page-header">
+							<h1>
+								<h:outputText value="#{tipos.label}" />
+							</h1>
+						</div>
+					</td>
+					<ui:repeat
+						value="#{peliculaController.buscarVideosTipo(tipos.label)}"
+						var="peli">
+						<div class="btn-group" width="400">
+							<h:graphicImage value="#{peli.imagenVideo}" width="200"
+								height="200" />
+							<div class="caption">
+								<h3>
+									<h:outputText value="#{peli.tituloVideo}" />
+								</h3>
+								<table width="200">
+									<tr>
+										<td><strong>Sipnosis:</strong> <h:outputText
+												value="#{peli.descripcionVideo.length() gt 35?  peli.descripcionVideo.substring(0, 30) : peli.descripcionVideo}" />...</td>
+									</tr>
+									<tr><td><strong>Precio:</strong>$ #{peli.precio}  </td></tr>
+								</table>
+								<p>
+									<h:commandButton id="Comprar" value="Comprar"
+										action="#{peliculaController.agregarCompraVideo(peli.id)}"
+										styleClass="btn btn-primary" />
+
+								</p>
+							</div>
+
+
+						</div>
+					</ui:repeat>
+				</p>
+			</ui:repeat>
+
+
+		</h:form>
+	</ui:define>
+</ui:composition>

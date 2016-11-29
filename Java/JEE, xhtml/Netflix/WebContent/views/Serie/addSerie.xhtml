@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	template="/WEB-INF/templates/default.xhtml"
+	xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+	<ui:define name="content">
+
+
+		<div class="page-header">
+			<h1>Crear Serie</h1>
+		</div>
+		<div class="row">
+			<div class="col-md-6">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title">Datos Serie</h3>
+					</div>
+					<div class="panel-body">
+						<h:form id="reg" role="form" enctype="multipart/form-data">
+
+							<div
+								class="form-group has-feedback #{!nombreSerie.valid? 'has-error' : ''}">
+								<h:outputLabel for="nombreSerie" value="Titulo Serie"
+									styleClass="control-label" />
+
+								<h:inputText id="nombreSerie" value="#{serie.nombreSerie}"
+									p:placeholder="Ingrese Titulo Serie" class="form-control"
+									binding="#{nombreSerie}" />
+								<span
+									class="#{!nombreSerie.valid ? 'glyphicon glyphicon-remove form-control-feedback' : ''}" />
+								<h:message for="nombres" errorClass="control-label has-error" />
+							</div>
+
+							<div
+								class="form-group has-feedback #{!imagen.valid? 'has-error' : ''}">
+								<h:outputLabel value="Cargar Imagen" for="fileUpload"
+									styleClass="control-label" />
+								<h:inputFile id="imagen" value="#{serieController.fileUpload}"
+									class="form-control" />
+							</div>
+
+							<div class="form-group">
+								<h:outputLabel for="tipoSerie" value="Tipo de Serie:"
+									styleClass="control-label" />
+								<h:selectOneMenu value="#{serie.tipoVideo}" id="tipo"
+									class="form-control">
+									<f:selectItems value="#{serieController.tipoVideo}" var="tipos"
+										itemValue="#{tipos}" itemLabel="#{tipos.label}" />
+								</h:selectOneMenu>
+							</div>
+							<div
+								class="form-group  #{!price.valid and facesContext.validationFailed? 'has-error' : ''}">
+								<h:outputLabel for="price" value="Precio:"
+									styleClass="control-label" />
+
+								<div class="input-group  has-feedback">
+									<span class="input-group-addon">$</span>
+									<h:inputText id="price" value="#{serie.precio}"
+										class="form-control" p:placeholder="Ingresar el precio"
+										binding="#{price}" />
+									<span
+										class="#{!price.valid ? 'glyphicon glyphicon-remove input-group-feedback input-group-addon' : ''}" />
+								</div>
+
+								<h:message for="price" errorClass="control-label has-error" />
+							</div>
+
+							<div class="form-group">
+
+								<h:commandButton id="Add" value="Agregar"
+									action="#{serieController.crearSerie()}"
+									styleClass="btn btn-primary" />
+							</div>
+							<h:messages styleClass="messages"
+								style="list-style: none; padding:0; margin:0;"
+								errorClass="alert alert-error" infoClass="alert alert-success"
+								warnClass="alert alert-warning" globalOnly="true" />
+						</h:form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</ui:define>
+</ui:composition>

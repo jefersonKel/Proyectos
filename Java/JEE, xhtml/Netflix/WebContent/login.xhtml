@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Netflix</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="description" content="" />
+	<meta name="author" content="" />
+
+	<h:outputStylesheet name="/webjars/bootstrap/3.3.7/css/bootstrap.css" />
+	<h:outputStylesheet
+		name="/webjars/bootstrap/3.3.7/css/bootstrap-theme.css" />
+</h:head>
+<h:body>
+
+	<div class="row">
+		<div class="col-md-3"></div>
+		<div class="col-xs-6 .col-md-4">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">INICIAR SESION</h3>
+				</div>
+				<div class="panel-body">
+					<h:form id="reg" role="form">
+
+						<h:outputText value="Username" styleClass="control-label" />
+						<div class="input-group" style="max-height: 10;">
+							<h:inputText id="correo" value="#{usuario.correo}"
+								class="form-control" binding="#{correo}" />
+							<span class="input-group-addon" id="basic-addon2">@tcs.com</span>
+						</div>
+						<h:message for="username"></h:message>
+						<br></br>
+						<br></br>
+
+						<h:outputLabel for="password" value="Password"
+							styleClass="control-label" />
+						<h:inputSecret id="password" value="#{usuario.password}"
+							class="form-control" binding="#{password}" />
+						<h:message for="password"></h:message>
+						<br></br>
+						<br></br>
+
+						<div class="input-group">
+							<div class="input-group-btn">
+								<h:commandButton id="Sesion" value="INICIAR SESION"
+									action="#{usuarioController.loginUsuario(usuario)}"
+									styleClass="btn btn-primary" />
+							</div>
+							<div class="input-group-btn">
+								<h:commandButton id="Crear" value="CREAR USUARIO"
+									action="/views/Usuario/addUsuarioLogin" styleClass="btn btn-primary" />
+							</div>
+						</div>
+						<h:messages styleClass="messages"
+							style="list-style: none; padding:0; margin:0;"
+							errorClass="alert alert-danger" infoClass="alert alert-success"
+							warnClass="alert alert-warning" globalOnly="true" />
+					</h:form>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</h:body>
+</html>
